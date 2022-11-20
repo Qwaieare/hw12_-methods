@@ -7,18 +7,16 @@ public class Main {
         System.out.println("");
         System.out.println("Задача 2");
 
-        int clientDeviceYear = LocalDate.now().getYear();
-        int clientOS = 0;
-        int constructYear = constructClientYear(clientDeviceYear);
-        int constructOS = constructClientOS(clientOS);
-        System.out.println(constructYear + constructOS);
+        String clientDevice = "LocalDate.now().getYear()";
+        String clientOS = "0";
+        Main.getClientOS(clientDevice, clientOS);
+
 
         System.out.println("");
         System.out.println("Задача 3");
 
-        int deliveryDistance = 195;
-        int result = deliveryOfBankCards(deliveryDistance);
-        System.out.println(result);
+        int deliveryDistance = 95;
+        Main.deliveryOfBankCards(deliveryDistance);
 
     }
 
@@ -32,36 +30,33 @@ public class Main {
         }
     }
 
-    private static int constructClientYear(int yearOS) {
-        if (yearOS == LocalDate.now().getYear()) {
-            System.out.println("Установите обычную версию приложения для ");
-        } else if (yearOS < LocalDate.now().getYear()) {
-            System.out.println("Установите облегченную версию приложения для ");
+    public static void getClientOS(String year, String name) {
+        if (year.equals("LocalDate.now().getYear()")) {
+            System.out.print("Установите обычную версию приложения для" + " ");
+        } else {
+            System.out.print("Установите облегченную версию приложения для" + " ");
         }
-        return (yearOS);
-    }
-
-    private static int constructClientOS(int textOS) {
-        if (textOS == 0) {
+        if (name.equals("0")) {
             System.out.println("iOS");
         } else {
             System.out.println("Android");
         }
-        return (textOS);
     }
 
-    private static int deliveryOfBankCards(int deliveryDistance) {
+    private static void deliveryOfBankCards(int deliveryDistance) {
         int days = 1;
 
         if (deliveryDistance <= 20) {
-            return days;
+            System.out.println("Потребуется " + days + " день");
         }
         if (deliveryDistance <= 60) {
-            return days += 1;
+            System.out.println("Потребуется " + (days + 1) + " дня");
         }
         if (deliveryDistance <= 100) {
-            return days += 2;
+            System.out.println("Потребуется " + (days + 2) + " дня");
+        } else {
+            System.out.println("Доставка до этого адреса невозможна");
         }
-        return days -= 1;
     }
+
 }
